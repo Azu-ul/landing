@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tejiendo Amor — 3 patrones gratis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  /* ============================================
+     NOTA SOBRE LA TIPOGRAFÍA "TAN Harmoni":
+     Es una fuente de pago (no está en Google Fonts),
+     así que no puede cargarse desde un link público.
+     Dejé el @font-face listo: si comprás la licencia,
+     subís los archivos .woff2 a /assets/fonts/ y
+     descomentás este bloque — el resto del sitio ya
+     está armado para usarla automáticamente.
+
+  @font-face {
+    font-family: 'TAN Harmoni';
+    src: url('assets/fonts/TANHarmoni.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+  }
+  ============================================ */
+
+  :root{
+    --rose: #EA8F97;
+    --mauve: #C26B72;
+    --mauve-deep: #8f4b52;
+    --blush: #fdf1f1;
+    --ink: #241417;
+    --white: #ffffff;
+    --display: 'Playfair Display', 'TAN Harmoni', serif;
+    --body: 'Poppins', sans-serif;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family: var(--body);
+    color: var(--ink);
+    background: var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  img{ max-width:100%; display:block; }
+
+  a{ color:inherit; }
+
+  /* --- stitch divider: signature element, echoes the dotted-thread
+     border in the logo. Used between every section instead of a
+     plain hairline. --- */
+  .stitch{
+    width:100%;
+    height:14px;
+    background-image: radial-gradient(circle, var(--mauve) 2px, transparent 2.4px);
+    background-size: 16px 16px;
+    background-position: 0 0;
+    opacity:.55;
+  }
+
+  .wrap{
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background: linear-gradient(180deg, var(--blush) 0%, var(--white) 78%);
+    padding: 40px 0 8px;
+    text-align:center;
+    position:relative;
+  }
+
+  .brandline{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-size: 13px;
+    letter-spacing: .12em;
+    text-transform:uppercase;
+    color: var(--mauve-deep);
+    font-weight:600;
+    margin-bottom: 18px;
+  }
+
+  .brandline::before, .brandline::after{
+    content:'';
+    width: 22px; height:1px;
+    background: var(--mauve);
+    opacity:.6;
+  }
+
+  .hero-image{
+    width: 168px;
+    margin: 0 auto 22px;
+    filter: drop-shadow(0 14px 20px rgba(194,107,114,.25));
+    animation: float 4.5s ease-in-out infinite;
+  }
+
+  @keyframes float{
+    0%,100%{ transform: translateY(0px); }
+    50%{ transform: translateY(-9px); }
+  }
+
+  h1{
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(32px, 9vw, 42px);
+    line-height: 1.12;
+    color: var(--mauve-deep);
+    margin-bottom: 14px;
+  }
+
+  h1 span{
+    display:block;
+    font-style: normal;
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: .04em;
+    color: var(--ink);
+    margin-top: 10px;
+  }
+
+  .sub{
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: #55444a;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  /* ---------- PATRONES (qué se lleva) ---------- */
+  .patrones{
+    padding: 34px 0 6px;
+  }
+
+  .eyebrow{
+    text-align:center;
+    font-size: 12.5px;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color: var(--mauve);
+    margin-bottom: 6px;
+  }
+
+  .patrones h2{
+    text-align:center;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 26px;
+    color: var(--ink);
+    margin-bottom: 26px;
+  }
+
+  .pattern-list{
+    display:flex;
+    flex-direction:column;
+    gap: 14px;
+  }
+
+  .pattern-card{
+    display:flex;
+    align-items:center;
+    gap: 14px;
+    background: var(--blush);
+    border-radius: 20px;
+    padding: 14px 16px;
+    border: 1px solid rgba(194,107,114,.15);
+  }
+
+  .pattern-num{
+    flex-shrink:0;
+    width: 40px; height:40px;
+    border-radius: 50%;
+    background: var(--rose);
+    color: var(--white);
+    display:flex; align-items:center; justify-content:center;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 18px;
+  }
+
+  .pattern-card p{
+    font-size: 14.5px;
+    font-weight:500;
+    color: var(--ink);
+  }
+
+  .pattern-card span{
+    display:block;
+    font-size: 12.5px;
+    font-weight:400;
+    color: #7a6469;
+    margin-top: 2px;
+  }
+
+  /* ---------- FORM ---------- */
+  .capture{
+    padding: 38px 0 46px;
+    background: var(--ink);
+    text-align:center;
+  }
+
+  .capture .eyebrow{ color: var(--rose); }
+
+  .capture h2{
+    font-family: var(--display);
+    font-style: italic;
+    color: var(--white);
+    font-size: 26px;
+    margin-bottom: 8px;
+  }
+
+  .capture p.desc{
+    color: rgba(255,255,255,.7);
+    font-size: 14px;
+    max-width: 320px;
+    margin: 0 auto 26px;
+    line-height:1.5;
+  }
+
+  /* ====================================================
+     ZONA HUBSPOT: reemplazá este <form> por el código de
+     embed que te da HubSpot (Marketing > Formularios >
+     Insertar). Dejé los estilos preparados para que el
+     formulario de HubSpot herede la apariencia si lo pegás
+     dentro de #hubspot-form-target.
+  ==================================================== */
+  #hubspot-form-target{ text-align:left; }
+
+  .field{
+    margin-bottom: 14px;
+  }
+
+  .field input{
+    width:100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: none;
+    font-family: var(--body);
+    font-size: 15px;
+    background: rgba(255,255,255,.08);
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,.18);
+  }
+
+  .field input::placeholder{ color: rgba(255,255,255,.45); }
+
+  .field input:focus{
+    outline: 2px solid var(--rose);
+    outline-offset: 2px;
+    background: rgba(255,255,255,.12);
+  }
+
+  .btn{
+    width:100%;
+    padding: 15px 16px;
+    border-radius: 14px;
+    border: none;
+    background: var(--rose);
+    color: var(--ink);
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 15px;
+    cursor:pointer;
+    transition: transform .15s ease, background .15s ease;
+  }
+
+  .btn:hover{ background: #f2a3aa; }
+  .btn:active{ transform: scale(.97); }
+
+  .fineprint{
+    font-size: 11.5px;
+    color: rgba(255,255,255,.4);
+    text-align:center;
+    margin-top: 14px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding: 26px 0 34px;
+    text-align:center;
+  }
+
+  footer .logo-mark{
+    width: 54px;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+  }
+
+  footer p{
+    font-size: 12px;
+    color: #9c8a8e;
+    letter-spacing:.04em;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .hero-image{ animation:none; }
+  }
+</style>
+</head>
+<body>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="brandline">Tejiendo Amor</div>
+      <img class="hero-image" src="assets/pato.png" alt="Amigurumi tejido a crochet, un patito redondo">
+      <h1>Tres patrones,
+        <span>directo a tu correo — gratis</span>
+      </h1>
+      <p class="sub">Muñequitas, mascotas y personajes tejidos a crochet, paso a paso y en español. Sin buscar más en internet.</p>
+    </div>
+  </section>
+
+  <div class="stitch"></div>
+
+  <section class="patrones">
+    <div class="wrap">
+      <div class="eyebrow">Lo que te llevás</div>
+      <h2>3 patrones para empezar hoy</h2>
+      <div class="pattern-list">
+        <div class="pattern-card">
+          <div class="pattern-num">1</div>
+          <p>Patito redondo<span>Ideal para principiantes, técnica base</span></p>
+        </div>
+        <div class="pattern-card">
+          <div class="pattern-num">2</div>
+          <p>Mini muñeca amigurumi<span>Personalizable, para regalar</span></p>
+        </div>
+        <div class="pattern-card">
+          <div class="pattern-num">3</div>
+          <p>Llavero de mascota<span>Rápido, con sobra de hilo</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stitch"></div>
+
+  <section class="capture">
+    <div class="wrap">
+      <div class="eyebrow">Dejá tu correo</div>
+      <h2>Te los mando ahora</h2>
+      <p class="desc">Además, vas a recibir tips de crochet y nuevos patrones cada semana.</p>
+
+      <div id="hubspot-form-target">
+        <!-- Reemplazar este form por el embed de HubSpot -->
+        <form onsubmit="event.preventDefault(); alert('Conectá esto con tu formulario de HubSpot');">
+          <div class="field">
+            <input type="text" placeholder="Tu nombre" required>
+          </div>
+          <div class="field">
+            <input type="email" placeholder="Tu correo electrónico" required>
+          </div>
+          <button class="btn" type="submit">Quiero mis 3 patrones</button>
+        </form>
+      </div>
+
+      <p class="fineprint">Nada de spam. Podés darte de baja cuando quieras.</p>
+    </div>
+  </section>
+
+  <footer>
+    <img class="logo-mark" src="assets/logo.png" alt="Logo Tejiendo Amor">
+    <p>Tejiendo Amor</p>
+  </footer>
+
+</body>
+</html>
